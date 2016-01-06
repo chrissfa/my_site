@@ -1,0 +1,171 @@
+#<IfModule mod_headers.c>
+#RequestHeader set X-Prerender-Token "fUSiowagHydJSKfMIyT5"
+#</IfModule>
+
+<ifModule mod_headers.c>
+Header set Connection keep-alive
+Header set Access-Control-Allow-Origin "*"
+</ifModule>
+
+<ifModule mod_rewrite.c>
+
+  RewriteEngine on
+# If requested resource exists as a file or directory
+  # (REQUEST_FILENAME is only relative in virtualhost context, so not usable)
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+    # Go to it as is
+    RewriteRule ^ - [L]
+
+  # If non existent
+    # If path ends with / and is not just a single /, redirect to without the trailing /
+      RewriteCond %{REQUEST_URI} ^.*/$
+      RewriteCond %{REQUEST_URI} !^/$
+      RewriteRule ^(.*)/$ $1 [R,QSA,L]      
+
+  # Handle Prerender.io
+    RequestHeader set X-Prerender-Token "fUSiowagHydJSKfMIyT5"
+
+    RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest [NC,OR]
+    RewriteCond %{QUERY_STRING} _escaped_fragment_
+
+    # Proxy the request
+    RewriteRule ^(.*)$ http://service.prerender.io/http://%{HTTP_HOST}/$1 [P,L]
+
+  # If non existent
+    # Accept everything on index.html
+    RewriteRule ^ /index.html
+</ifModule>
+
+
+# 1
+# If your host has ModPagespeed enabled, it will minify your
+# entire site. But, it may cause unexpected caching results,
+# so let's start with this off.
+<IfModule pagespeed_module>
+ ModPagespeed off
+</IfModule>
+
+# 2
+# GZip Compression
+##<IfModule mod_deflate.c>
+ #AddOutputFilterByType DEFLATE application/javascript
+ #AddOutputFilterByType DEFLATE application/json
+ #AddOutputFilterByType DEFLATE application/rss+xml
+ #AddOutputFilterByType DEFLATE application/x-javascript
+ #AddOutputFilterByType DEFLATE application/xhtml+xml
+ #AddOutputFilterByType DEFLATE application/xml
+ #AddOutputFilterByType DEFLATE text/css
+ #AddOutputFilterByType DEFLATE text/html
+ #AddOutputFilterByType DEFLATE text/plain
+ #AddOutputFilterByType DEFLATE text/xml
+#</IfModule>
+
+#<ifModule mod_gzip.c>
+#mod_gzip_on Yes
+#mod_gzip_dechunk Yes
+#mod_gzip_item_include file .(html?|txt|css|js|php|pl|json)$
+#mod_gzip_item_include handler ^cgi-script$
+#mod_gzip_item_include mime ^text/.*
+#mod_gzip_item_include mime ^application/x-javascript.*
+#mod_gzip_item_exclude mime ^image/.*
+#mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+#</ifModule>
+
+
+<IfModule mod_mime.c>
+    AddType video/mp4 .mp4
+    AddType video/webm .webm
+    AddType video/ogg .ogv
+    AddType application/javascript          js
+    AddType application/vnd.ms-fontobject   eot
+    AddType application/x-font-ttf          ttf ttc
+    AddType font/opentype                   otf
+    AddType application/x-font-woff         woff
+    AddType application/font-woff2          woff2
+    AddType image/svg+xml                   svg svgz 
+    AddEncoding gzip                        svgz
+</Ifmodule>
+
+# -----------------------------------------------------------------------
+# Compressing output.
+# -----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
+    AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
+    AddOutputFilterByType DEFLATE image/x-icon image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
+</Ifmodule>
+
+# 3
+# Expires headers
+<IfModule mod_expires.c>
+ ExpiresActive on
+ ExpiresDefault "access plus 1 month"
+ # CSS
+ ExpiresByType text/css "access plus 1 month"
+ # Data interchange
+ ExpiresByType application/json "access plus 0 seconds"
+ ExpiresByType application/xml "access plus 0 seconds"
+ ExpiresByType text/xml "access plus 0 seconds"
+ # Favicon
+ ExpiresByType image/x-icon "access plus 1 week"
+ # HTML components
+ ExpiresByType text/x-component "access plus 1 month"
+ # HTML
+ ExpiresByType text/html "access plus 0 seconds"
+ # JavaScript
+ ExpiresByType application/javascript "access plus 1 year"
+ # Manifest
+ ExpiresByType application/x-web-app-manifest+json "access plus 0 seconds"
+ ExpiresByType text/cache-manifest "access plus 0 seconds"
+ # Media
+ ExpiresByType audio/ogg "access plus 1 month"
+ ExpiresByType image/gif "access plus 1 month"
+ ExpiresByType image/jpeg "access plus 1 month"
+ ExpiresByType image/png "access plus 1 month"
+ ExpiresByType video/mp4 "access plus 1 month"
+ ExpiresByType video/ogg "access plus 1 month"
+ ExpiresByType video/webm "access plus 1 month"
+ # Feeds
+ ExpiresByType application/atom+xml "access plus 1 hour"
+ ExpiresByType application/rss+xml "access plus 1 hour"
+ # Fonts
+ ExpiresByType application/font-woff "access plus 1 month"
+ ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+ ExpiresByType application/x-font-ttf "access plus 1 month"
+ ExpiresByType font/opentype "access plus 1 month"
+ ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+# Expires headers and Entity tag (ETag)? Because you are
+# manually setting the expires above and ETags are normally
+# used to check newer versions of cached files,
+# let's disable ETags as well
+Header unset ETag
+FileETag None
+
+
+
+
+
+# 4
+# Cache control headers. This tells browser how to
+# handle file caching
+<ifModule mod_headers.c>
+ <filesMatch "\.(ico|jpe?g|png|gif|swf)$">
+ Header set Cache-Control "public"
+ </filesMatch>
+ <filesMatch "\.(css)$">
+ Header set Cache-Control "public"
+ </filesMatch>
+ <filesMatch "\.(js)$">
+ Header set Cache-Control "private"
+ </filesMatch>
+ <filesMatch "\.(x?html?|php)$">
+ Header set Cache-Control "private, must-revalidate"
+ </filesMatch>
+ <FilesMatch "\.(bmp|css|flv|gif|ico|jpg|jpeg|js|pdf|png|svg|swf|tif|tiff)$">
+ Header set Last-Modified "Mon, 31 Aug 2000 00:00:00 GMT"
+ </FilesMatch>
+</ifModule>

@@ -1,0 +1,398 @@
+<section id="open" open>
+
+
+
+	<section id="top-part" 
+		ng-class="{'blog-height' : client.terms.category[0].slug == 'blog' || client.terms.category[0].slug == 'team' || client.terms.category[0].slug == 'careers', 'case-height' : client.terms.category[0].slug == 'case-study'}" >
+
+
+
+		
+		<div id="top-bar">
+
+
+
+
+                    <div ng-class="{'x3' : client.terms.category[0].slug == 'case-study', 'x1' : client.terms.category[0].slug != 'case-study'}"><!--case study logo client.acf.tile_image-->
+
+                    	<div id="brand-tag" ng-if="client.terms.category[0].slug == 'case-study' && client.acf.clients_logo[0].url"><!--case study logo client.acf.tile_image-->
+
+
+                            <img id="brand-tag-item" alt="{{client.acf.client_logo_secondary[0].alt}}" ng-src="{{client.acf.client_logo_secondary[0].url != '' && client.acf.client_logo_secondary[0].url != null ? client.acf.client_logo_secondary[0].url : client.acf.clients_logo[0].url}}">
+
+                    	</div>
+
+                    </div>
+                    <div id="top-content" ng-class="{'x8' : client.terms.category[0].slug == 'case-study', 'x10' : client.terms.category[0].slug != 'case-study'}">
+
+                    	<div id="top-content-title" ng-if="client.terms.category[0].slug == 'team' || client.terms.category[0].slug == 'blog' || client.terms.category[0].slug == 'careers'">
+                    		
+                    		<div id="central-container">
+                    			<div title="{{client.acf.tile_image.alt}}" ng-style="{'background-image' : 'url({{client.acf.tile_image.sizes.tlrg}})'}" ng-if="client.terms.category[0].slug == 'team'"></div>
+                    			<h4 class="target" ng-bind-html="htmlSafe(client.title)"></h4>
+	                    		<h5 ng-if="client.terms.category[0].slug == 'team'">{{client.acf.position}} {{client.title === "Jim Blyth" ? "& Design Director" : ""}}</h5>
+	                    		<h5 class="btm-align" ng-if="client.terms.category[0].slug == 'blog'">{{client.date | date:'longDate'}} <alloydivider>|</alloydivider> Written by {{client.theAuthors}}</h5>
+                    		</div>
+
+                    	</div>
+
+                    	<div id="top-footer" ng-if="client.terms.category[0].slug != 'case-study'"></div>
+                    	
+
+                    </div>
+                    <div class="x1">
+
+						<div id="close" class="toucharea"
+
+							ng-mouseenter="this.over = true"
+				            ng-mouseleave="this.over = false"
+				            ng-click="goNew('/', $event, this);"
+				            my-show="this.show"
+				            after-show="afterShow()"
+				            ng-class="{'ng-hover' : (this.over && inputType == 'mouse')}"
+
+						>
+
+							<svg x="0px" y="0px" width="100px" height="100px" viewBox="0 0 43 43" enable-background="new 0 0 43 43">
+								<g>
+									<!--<path fill="#fff" d="M42,42H0V0h42V42z M2,40h38V2H2V40z"/>-->
+									<line fill="none" stroke-width="1.8" stroke-linecap="round" stroke-miterlimit="10" x1="11" y1="11" x2="31" y2="31"/>
+									<line fill="none" stroke-width="1.8" stroke-linecap="round" stroke-miterlimit="10" x1="11" y1="31" x2="31" y2="11"/>
+								</g>
+							</svg>
+						</div>
+
+
+                    </div>
+                    
+
+		</div>	
+
+
+		<div id="pop" pop class="carousel-holder" ng-swipe-left="clickRight()" ng-swipe-right="clickLeft()" ng-mouseover="arrowActivateFromMouse = true;" ng-mouseleave="arrowActivateFromMouse = false;"
+			banner-length="client.acf.banner_image.length" banner="banner" just-changed-banner="justChangedBanner" slider-timer="sliderTimer" vid-status="vidStatus" swipe-right="swipeRight">
+
+			<div id="table-center">
+				<div id="table-cell-center">
+				
+					<div id="arrow-cont" ng-show="inputType != 'touch' && client.acf.banner_image.length > 1 &&  arrowActivateFromMouse">
+
+						<div id="left-arrow" ng-click="clickLeft();" >
+		                    
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 44.5 27.9" style="enable-background:new 0 0 44.5 27.9;" xml:space="preserve">
+								<polyline style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="
+								42.2,4.2 22.3,24.1 2.4,4.2 "/>
+							</svg>
+							<div id="left-arrow-square"></div>
+							<div id="left-arrow-circle"></div>
+						</div>
+
+						<div id="right-arrow" ng-click="clickRight()">
+
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 44.5 27.9" style="enable-background:new 0 0 44.5 27.9;" xml:space="preserve">
+								<polyline style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="
+								42.2,4.2 22.3,24.1 2.4,4.2 "/>
+							</svg>
+							<div id="right-arrow-square"></div>
+							<div id="right-arrow-circle"></div>
+						</div>
+
+					</div>
+				
+				</div>				
+				
+			</div>			
+
+
+
+
+			<div id="animate-banner-container" ng-if="client.acf.banner_image.length" >
+
+
+
+				<div class="swipe-banner" ng-repeat="b in client.acf.banner_image" ng-class="{'left' : swipeRight, 'carousel' : !swipeRight}"  ng-if="$index == banner" >
+
+						<video id="videoTouchIt" class="videoTouchIt" ng-style="{'z-index': vidStatus != 'end' ? '21' : '20'}" ui-event="{ ended : 'endVideo()'}" ng-click="pauseVideo();"
+						ng-init="b.description ? getVideo(b.description) : null; " ng-if="b.description" >
+							<source type="video/mp4" ng-src="{{trustSrc(videoToPlay)}}" >
+						</video>
+
+						<div class="play-button-cont" ng-if="b.description && vidStatus != 'play' && vidStatus != 'continue'" ng-click="playVideo();" >
+							<svg class="play-video" analytics-on="click" analytics-event="Play video: {{b.title}} video" xmlns="http://www.w3.org/2000/svg" viewBox="-837 293 325 325" style="enable-background:new -837 293 325 325"><defs/><circle cx="-674.5" cy="455.5" r="155" style="fill:none;stroke-width:15"/><path d="m-745 357c1-1 2.7-1 3.7 0l170.4 99.4c1 1 1 2.7 0 3.7l-170.4 98.4c-1 1-2.7.6-3.7-.4v-201.1" style=""/></svg>
+						</div>
+	
+						<img id="banner-image" ng-if="client.terms.category[0].slug == 'case-study'" alt="{{b.alt}}"
+						ng-src="{{responsiveImage == 6 ? b.sizes.blrg : responsiveImage == 3 ? b.sizes.bmed : b.sizes.bsml}}" >
+					
+						<div id="img-blog" title="{{b.alt}}" ng-if="client.terms.category[0].slug == 'blog' || client.terms.category[0].slug == 'team' || client.terms.category[0].slug == 'careers'"
+						ng-style="{'background-image': responsiveImage == 6 ? 'url({{b.sizes.blrg}})' : responsiveImage == 3 ? 'url({{b.sizes.bmed}})' : 'url({{b.sizes.bsml}})'}" ></div>
+				</div>			
+
+
+			</div>
+
+		</div>
+
+
+
+
+
+		<div id="bottom-bar" ng-if="client.terms.category[0].slug == 'case-study'">
+
+
+                    <div id="dot-cont" ng-if="client.acf.banner_image.length > 1">
+                    	<div ng-repeat="b in client.acf.banner_image" class="dot target" ng-class="{'fill' : banner == $index}" ng-click="clickDot($index)"></div>
+                    </div>
+
+					<div id="bottom-arrow" ng-click="newLocation('bottom')">
+
+						<svg class="cssBounce" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 44.5 27.9" style="enable-background:new 0 0 44.5 27.9;" xml:space="preserve">
+							<polyline style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="
+							42.2,4.2 22.3,24.1 2.4,4.2 "/>
+						</svg>
+						<div id="bottom-arrow-circle"></div>	
+						<div id="bottom-arrow-square"></div>
+						
+					</div>
+                    
+
+		</div>				
+
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+	<section id="bottom" class="bottom">
+
+		<div ng-bind-html="htmlSafe(client.content)"></div>	<!--ng-style="{'margin-top': client.terms.category[0].slug == 'team' || client.terms.category[0].slug == 'blog' || client.terms.category[0].slug == 'careers' ? '1.414em' : '0'}"-->
+
+	</section>
+
+
+	<div id="connect" ng-if="client.acf.social_media_links != '0' && client.terms.category[0].slug == 'team'">
+		<div class="connect-text">
+			<p>Connect with {{client.title | split:' ':0}}</p>
+		</div>
+		<div class="connect-links"><a ng-repeat="s in client.acf.social_media_links" ng-click="href('{{s.url}}', '_blank')" analytics-on="click" analytics-event="Clicked on {{s.url}}"><img alt="{{s.image[0].alt}}" ng-src="{{s.image[0].url}}"></div></a>
+	</div>
+
+
+	<!--
+	<section id="related" ng-if="client.terms.category[0].slug == 'case-study' && relatedArray.length > 0" wedo>
+
+		<div class="related-cont">
+
+			<h2>Related Projects</h2>
+
+
+			<div class="center">
+
+			    <div class="client-cont toucharea client-cont-ani" ng-repeat="r in relatedArray" ng-style="{'float' : relatedArray.length > relatedResponsiveNo ? 'left' : 'none' }"
+
+	                ng-mouseenter="r.over = true"
+	                ng-mouseleave="r.over = false;"
+	                ng-click="goNew(c.terms.category[0].slug == 'blog' ? 'blogs/{{r.slug}}' : 'projects/{{r.slug}}', $event, r);"
+	                my-show="r.show"
+	                after-show="afterShow();"
+	                ng-class="{'client-cont-ani' : r.terms.category[0].slug != 'loadmore', 'ng-hover' : (r.over && inputType == 'mouse')}"
+
+			
+			        >
+
+
+
+
+			        
+
+			        <div class="client-cover" ng-style="{'background': r.acf.tile_colour}" >
+			            {{clients[navNextPrev.prev].terms.category.slug}}
+			        </div>
+			        <div class="client-image" title="{{r.acf.tile_image.alt}}" ng-style="{'background-image': 'url({{r.acf.tile_image.sizes.tsml}})'}"></div>
+			        
+			        <div class="img-container" ng-if="r.terms.category[0].slug == 'case-study'">
+			                
+			                            <img class="item" alt="{{r.acf.clients_logo[0].alt}}" ng-src="{{r.acf.clients_logo[0].url}}">
+			                                            
+			        </div>
+
+			        <div class="txt-cont" ng-if="r.terms.category[0].slug == 'blog'">
+
+			            <div class="square-content"><div><p class="common-text-var" ng-bind-html="htmlSafe(clients[navNextPrev.prev].title)"></p></div></div>
+
+			        </div>
+
+			    </div>
+
+
+			</div>  
+
+		</div>
+
+
+	</section>
+	-->
+
+	<section id="more">
+
+
+		<!--TEAM MORE-->
+		<div class="bottom-nav-cont" ng-if="client.terms.category[0].slug == 'team'">
+
+			<h2>More Team Members</h2>
+
+			<div class="x6 the-left">
+
+                    <div class="team-cont toucharea w3"
+
+                        ng-mouseenter="team[navNextPrev.prev].over = true; joinText = 'CURRENT CAREER OPPORTUNITIES'"
+                        ng-mouseleave="team[navNextPrev.prev].over = false; joinText = 'JOIN THE TEAM...'"
+                        ng-click="goNew('team/{{team[navNextPrev.prev].slug}}', $event, team[navNextPrev.prev]);" 
+                        my-show="team[navNextPrev.prev].show"
+                        after-show="afterShow()"
+                        ng-class="{'ng-hover' : (team[navNextPrev.prev].over && inputType == 'mouse')}"
+                    >
+           
+                            <div ng-if="team[navNextPrev.prev].title != 'Careers'">
+                                <div class="team-shadow" ng-style=""></div>
+
+                                <div class="team-image" title="{{team[navNextPrev.prev].acf.tile_image.alt}}" 
+                                    ng-style="{'background-image': responsiveImage == 6 ? 'url({{team[navNextPrev.prev].acf.tile_image.sizes.tlrg}})' : responsiveImage == 3 ? 'url({{team[navNextPrev.prev].acf.tile_image.sizes.tmed}})' : 'url({{team[navNextPrev.prev].acf.tile_image.sizes.tsml}})'}"
+                                ></div>
+                                <div class="team-image-hover" title="{{team[navNextPrev.prev].acf.hover_image.alt}}" ng-style="{'background-image': responsiveImage == 6 ? 'url({{team[navNextPrev.prev].acf.hover_image.sizes.tlrg}})' : responsiveImage == 3 ? 'url({{team[navNextPrev.prev].acf.hover_image.sizes.tmed}})' : 'url({{team[navNextPrev.prev].acf.hover_image.sizes.tsml}})'}"></div>
+                                <div class="team-header">{{team[navNextPrev.prev].title}}<br><div class="smaller">{{team[navNextPrev.prev].acf.position}}</div></div>
+                            </div>
+
+                    </div>
+					
+
+	       	</div>
+
+	   		<div class="x6 the-right">    	
+					<div class="team-cont toucharea w3"
+
+                        ng-mouseenter="team[navNextPrev.next].over = true; joinText = 'CURRENT CAREER OPPORTUNITIES'"
+                        ng-mouseleave="team[navNextPrev.next].over = false; joinText = 'JOIN THE TEAM...'"
+                        ng-click="goNew('team/{{team[navNextPrev.next].slug}}', $event, team[navNextPrev.next]);"
+                        my-show="team[navNextPrev.next].show"
+                        after-show="afterShow()"
+                        ng-class="{'ng-hover' : (team[navNextPrev.next].over && inputType == 'mouse')}"
+                    >
+           
+                            <div ng-if="team[navNextPrev.next].title != 'Careers'">
+                                <div class="team-shadow" ng-style=""></div>
+
+                                <div class="team-image" title="{{team[navNextPrev.next].acf.tile_image.alt}}"
+                                    ng-style="{'background-image': responsiveImage == 6 ? 'url({{team[navNextPrev.next].acf.tile_image.sizes.tlrg}})' : responsiveImage == 3 ? 'url({{team[navNextPrev.next].acf.tile_image.sizes.tmed}})' : 'url({{team[navNextPrev.next].acf.tile_image.sizes.tsml}})'}"
+                                ></div>
+                                <div class="team-image-hover" title="{{team[navNextPrev.next].acf.hover_image.alt}}" ng-style="{'background-image': responsiveImage == 6 ? 'url({{team[navNextPrev.next].acf.hover_image.sizes.tlrg}})' : responsiveImage == 3 ? 'url({{team[navNextPrev.next].acf.hover_image.sizes.tmed}})' : 'url({{team[navNextPrev.next].acf.hover_image.sizes.tsml}})'}"></div>
+                                <div class="team-header">{{team[navNextPrev.next].title}}<br><div class="smaller">{{team[navNextPrev.next].acf.position}}</div></div>
+                            </div>
+
+                    </div>
+
+
+	       	</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+		<!--BLOG/CASE more-->
+		<div class="bottom-nav-cont" ng-if="client.terms.category[0].slug != 'team' && weDoSplit.length > 1" wedo>
+			<h2 ng-if="client.terms.category[0].slug == 'case-study'">More Projects</h2>
+			<h2 ng-if="client.terms.category[0].slug == 'blog'">More Posts</h2>
+			<div class="x6 the-left"> 
+		        <div class="client-cont toucharea client-cont-ani" style="background: grey;"
+
+		            ng-mouseenter="this.over = true"
+		            ng-mouseleave="this.over = false"
+		            ng-click="goNew(client.terms.category[0].slug == 'blog' ? 'blogs/{{clients[navNextPrev.prev].slug}}' : 'projects/{{clients[navNextPrev.prev].slug}}', $event, clients[navNextPrev.prev]);"
+		            my-show="clients[navNextPrev.prev].show"
+		            after-show="afterShow()"
+		            ng-class="{'ng-hover' : (this.over && inputType == 'mouse')}"
+		
+		        >
+	            
+
+		            <div class="client-cover" ng-style="{'background': clients[navNextPrev.prev].acf.tile_colour}" >
+		                {{clients[navNextPrev.prev].terms.category.slug}}
+		            </div>
+		            <div class="client-image" title="{{clients[navNextPrev.prev].acf.tile_image.alt}}" ng-style="{'background-image': 'url({{clients[navNextPrev.prev].acf.tile_image.sizes.tsml}})'}"></div>
+		            
+		            <div class="img-container" ng-if="clients[navNextPrev.prev].terms.category[0].slug == 'case-study'">
+		                    
+		                                <img class="item" alt="{{clients[navNextPrev.prev].acf.clients_logo[0].alt}}" ng-src="{{clients[navNextPrev.prev].acf.clients_logo[0].url}}">
+		                                                
+		            </div>
+
+		            <div class="txt-cont" ng-if="clients[navNextPrev.prev].terms.category[0].slug == 'blog'">
+
+		                <div class="square-content"><div><p class="common-text-var" ng-bind-html="htmlSafe(clients[navNextPrev.prev].title)"></p></div></div>
+
+		            </div>
+
+		        </div>
+						        
+	       	</div>
+
+	   		<div class="x6 the-right">    	
+		        <div class="client-cont toucharea client-cont-ani" style="background: grey;"
+
+		            ng-mouseenter="this.over1 = true"
+		            ng-mouseleave="this.over1 = false"
+		            ng-click="goNew(client.terms.category[0].slug == 'blog' ? 'blogs/{{clients[navNextPrev.next].slug}}' : 'projects/{{clients[navNextPrev.next].slug}}', $event, clients[navNextPrev.next]);"
+		            my-show="clients[navNextPrev.next].show"
+		            after-show="afterShow()"
+		            ng-class="{'ng-hover' : (this.over1 && inputType == 'mouse')}"
+
+
+		        >
+		               
+
+		            <div class="client-cover" ng-style="{'background': clients[navNextPrev.next].acf.tile_colour}" >
+		                {{clients[navNextPrev.next].terms.category.slug}}
+		            </div>
+		            <div class="client-image" title="{{clients[navNextPrev.next].acf.tile_image.alt}}" ng-style="{'background-image': 'url({{clients[navNextPrev.next].acf.tile_image.sizes.tsml}})'}"></div>
+		            
+		            <div class="img-container" ng-if="clients[navNextPrev.next].terms.category[0].slug == 'case-study'">
+		                    
+		                                <img class="item" alt="{{clients[navNextPrev.next].acf.clients_logo[0].url.alt}}" ng-src="{{clients[navNextPrev.next].acf.clients_logo[0].url}}">
+		                                                
+		            </div>
+
+		            <div class="txt-cont" ng-if="clients[navNextPrev.next].terms.category[0].slug == 'blog'">
+
+		                <div class="square-content"><div><p class="common-text-var" ng-bind-html="htmlSafe(clients[navNextPrev.next].title)"></p></div></div>
+
+		            </div>
+
+		        </div>
+
+
+	       	</div>
+		</div>
+
+	</section>
+
+
+
+
+</section>

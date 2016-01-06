@@ -1,0 +1,164 @@
+   
+
+
+
+
+    <section id="top">
+
+        
+        <div id="image-bg"></div>
+        <div id="top-bar">
+            <div id="menu">
+                <div id="wrap">
+
+                    <div ng-repeat="m in menu.store"
+
+                            class="toucharea" ng-click="goNew('bit', $event, this); newLocation('{{m.go}}');"
+
+                            ng-mouseenter="this.over = true"
+                            ng-mouseleave="this.over = false"
+
+                            my-show="this.show"
+                            after-show="afterShow()"
+                            ng-class="{'ng-hover' : (this.over && inputType == 'mouse')}"
+
+
+                    >{{m.item}}
+
+
+                    </div>
+               
+                </div>
+
+            </div>
+
+        </div>
+        <div id="big-text"><h2>Hello</h2></div>
+        <div id="big-text" class="not-top"><h2>There.</h2></div>
+        <div id="button-cont">
+            <div id="button"
+                            class="toucharea" ng-click="goNew('bit', $event, this); newLocation('middle');"
+
+                            ng-mouseenter="this.over = true"
+                            ng-mouseleave="this.over = false"
+
+                            my-show="this.show"
+                            after-show="afterShow()"
+                            ng-class="{'ng-hover' : (this.over && inputType == 'mouse')}"
+
+            ><h1>Go!</h1></div>
+        </div>
+        <div id="small-text"><h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. </h3></div>
+
+
+
+    </section>
+
+
+
+
+
+
+    <section id="middle" class="middle">
+        <div class="divide"></div>
+        <div class="bit">
+            <div class="b-cont">
+                <div class="center">
+                    <img src="img/dummy.jpg">
+                    <div class="b-text"><h1>Lorem 1</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
+
+
+                </div>
+            </div>
+          
+        </div>
+
+
+
+        <div class="bit">
+            <div class="b-cont">
+                <div class="center">
+                    <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 2</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
+
+
+                </div>
+            </div>
+          
+        </div>
+
+
+        <div class="bit not-first-row">
+            <div class="b-cont">
+                <div class="center">
+                    <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 2</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
+
+
+                </div>
+            </div>
+          
+        </div>
+
+
+        <div class="bit not-first-row last-row">
+            <div class="b-cont">
+                <div class="center">
+                    <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 2</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
+
+
+                </div>
+            </div>
+          
+        </div>                
+    </section>
+
+
+    <section id="skills" class="skills">
+        <div class="divide"></div>
+        <div id="image-bg"></div>
+        <div class="center">
+            
+            <div class="bit">
+
+                <h1>Skills</h1>
+
+                <ul>
+                    <li>HTML5, CSS3, JavaScript, jQuery, AngularJS, Node.js, Express, MongoDB, Gulp, Sass, Ionic and Qt / QML.</li>
+                    <li>Developing pixel-perfect UIs across a variety of web platforms.
+                    <li>Documenting and following wireframes and workflows.</li>
+                    <li>Cross-browser compatibility.</li>
+                    <li><i class="fa fa-file-pdf-o fa-2x"></i>&nbsp;&nbsp;Download CV</li>
+                </ul>
+             
+            </div> 
+
+        </div>
+        
+
+
+
+    </section>
+
+
+    <section id="contact" class="contact">
+        <div id="image-bg"></div>
+        <div class="divide"></div>
+        <div class="bit">
+
+            <h1>Contact</h1>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-linkedin-square fa-2x m"></i>
+            <i class="fa fa-envelope-square fa-2x m"></i>
+             
+        </div> 
+
+
+
+    </section>
+
+
+    <!--<section id="bottom" class="bottom">
+        
+        
+
+
+    </section>-->

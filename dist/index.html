@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="CWapp" prefix="og: http://ogp.me/ns#">
+
+
+
+
+        <head lang="en">
+
+              <meta charset="utf-8">
+              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+              <!--<meta name="viewport" content ="width = device-width, user-scalable = no">-->
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+              <meta name="description" content="We are a team of industrial and interaction designers, based in the UK who create outstanding physical and digital experiences for clients across the globe.">
+              <meta name="application-name" content="Alloy">
+              <meta name="author" content="Alloy">
+
+              <!--For prerender SEO errors-->
+              <meta name="prerender-status-code" content="{{statusCode}}">
+
+              <title>NEW</title>
+
+              <!--Angular/HTML5-->
+              <base href="/"/>
+              <meta name="fragment" content="!">
+
+              <!-- styles -->
+              <link rel="stylesheet" href="css/undohtml.min.css"/>
+              <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css"/>
+              <!--<link rel="stylesheet" href="bower_components/animate.css/animate.css"/>-->
+              <link rel="stylesheet" href="css/main.min.css"/>
+
+
+              <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+              <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+              <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+              <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+              <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png" />
+              <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+              <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+              <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+              <link rel="icon" type="image/png" href="img/favicon/favicon-196x196.png" sizes="196x196" />
+              <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
+              <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32" />
+              <link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16" />
+              <link rel="icon" type="image/png" href="img/favicon/favicon-128.png" sizes="128x128" />
+              <meta name="msapplication-TileColor" content="#FFFFFF" />
+              <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png" />
+              <meta name="msapplication-square70x70logo" content="img/favicon/mstile-70x70.png" />
+              <meta name="msapplication-square150x150logo" content="img/favicon/mstile-150x150.png" />
+              <meta name="msapplication-wide310x150logo" content="img/favicon/mstile-310x150.png" />
+              <meta name="msapplication-square310x310logo" content="img/favicon/mstile-310x310.png" />
+
+
+              <!--META NAMES-->
+              <meta property="og:image" content="http://www.thealloy.com/images/social/large.jpg" />
+              <meta property="og:image" content="http://www.thealloy.com/images/social/small.jpg" />
+              <meta property="og:title" content="Alloy" />             
+              <meta property="og:url" content="http://www.thealloy.com"/>
+              <meta property="og:description" content="We are a team of industrial and interaction designers, based in the UK who create outstanding physical and digital experiences for clients across the globe." />
+              <meta property="og:type" content="website" />
+
+              <meta name="twitter:url" content="http://www.thealloy.com">
+              <meta name="twitter:card" content="summary_large_image">
+              <meta name="twitter:site" content="@thealloy">
+              <meta name="twitter:creator" content="@thealloy">
+              <meta name="twitter:title" content="Alloy">
+              <meta name="twitter:description" content="We are a team of industrial and interaction designers, based in the UK who create outstanding physical and digital experiences for clients across the globe.">
+              <meta name="twitter:image" content="http://www.thealloy.com/images/social/large.jpg">
+
+
+
+        </head>
+
+
+
+
+        <body>
+
+              <div class="container" ng-view 
+
+                  hm-manager-options='{"preventGhosts": true, "cssProps": {"userSelect": true}}' hm-press="touchDetect($event)"
+                  ng-mousemove="mouseDetect($event)" 
+                  hm-recognizer-options='[ {"type":"press","time":0, "threshold":1000}, {"type":"pressup","time":0, "threshold":1000}]'
+
+              >
+              </div>
+
+
+        </body>
+
+
+        <!-- scripts -->    
+        
+        <script src="bower_components/jquery/dist/jquery.min.js"></script> <!--using 1.9 for IE8 purposes-->
+        <script src="bower_components/angular/angular.min.js"></script>
+
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>   
+        <script src="bower_components/angular-touch/angular-touch.min.js"></script>  
+        <script type="text/javascript" src="bower_components/angular-ui-event/dist/event.min.js"></script>
+
+        <script src="bower_components/hammerjs/hammer.min.js"></script>
+        <script src="bower_components/ryanmullins-angular-hammer/angular.hammer.min.js"></script>
+
+        <script src="bower_components/webfontloader/webfontloader.js"></script>
+
+        <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
+        <script src="bower_components/aga/dist/aga.min.js"></script>
+
+
+        <script type="text/javascript"  src="js/main.js"></script>
+        <script type="text/javascript"  src="js/directives.js"></script>
+        <script type="text/javascript"  src="js/services.js"></script>
+
+
+        <!--[if !IE]><!-->
+            <!--<script type="text/javascript" src="js/not_ie9.js"></script>
+        <!--<![endif]-->
+
+
+        <!--[if IE 9]>
+            <script type="text/javascript" src="js/ie9_only.js"></script>
+        <![endif]-->
+
+
+
+
+    
+
+</html>

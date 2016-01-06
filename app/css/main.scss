@@ -1,0 +1,365 @@
+
+$font-stack:	'open_sanslight';
+$font-second:	'open_sansregular';
+$font-third:	'open_sansitalic';
+$font-fourth:	'open_sanslight_italic';
+
+
+$black-color: #000;
+$white-color: #FFF;
+
+$the-color: #e74c3c;
+
+$text-color: #505050;
+$grey-color: #F0F0F0;
+$grey-color-2: #979797;
+
+/*Base font*/
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('../font/opensans-light-webfont.eot');
+    src: url('../font/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/opensans-light-webfont.woff2') format('woff2'),
+         url('../font/opensans-light-webfont.woff') format('woff'),
+         url('../font/opensans-light-webfont.ttf') format('truetype'),
+         url('../font/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'open_sansitalic';
+    src: url('../font/opensans-italic-webfont.eot');
+    src: url('../font/opensans-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/opensans-italic-webfont.woff2') format('woff2'),
+         url('../font/opensans-italic-webfont.woff') format('woff'),
+         url('../font/opensans-italic-webfont.ttf') format('truetype'),
+         url('../font/opensans-italic-webfont.svg#open_sansitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'open_sanslight_italic';
+    src: url('../font/opensans-lightitalic-webfont.eot');
+    src: url('../font/opensans-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/opensans-lightitalic-webfont.woff2') format('woff2'),
+         url('../font/opensans-lightitalic-webfont.woff') format('woff'),
+         url('../font/opensans-lightitalic-webfont.ttf') format('truetype'),
+         url('../font/opensans-lightitalic-webfont.svg#open_sanslight_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../font/opensans-regular-webfont.eot');
+    src: url('../font/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/opensans-regular-webfont.woff2') format('woff2'),
+         url('../font/opensans-regular-webfont.woff') format('woff'),
+         url('../font/opensans-regular-webfont.ttf') format('truetype'),
+         url('../font/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'open_sanssemibold';
+    src: url('../font/opensans-semibold-webfont.eot');
+    src: url('../font/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/opensans-semibold-webfont.woff2') format('woff2'),
+         url('../font/opensans-semibold-webfont.woff') format('woff'),
+         url('../font/opensans-semibold-webfont.ttf') format('truetype'),
+         url('../font/opensans-semibold-webfont.svg#open_sanssemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+// Media Query Info
+$break-medium: 1024px;
+$break-small: 500px;
+$break-landscape: 750px;
+$footer: 910px;
+$smallest-height: 750px;
+
+// RESPONSIVE MIXINS
+@mixin mobile {
+  @media screen and (max-width: #{$break-small}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: #{$break-medium}) {
+    @content;
+  }
+}
+
+@mixin height {
+  @media only screen and (max-height: #{$smallest-height}) {
+    @content;
+  }
+}
+@mixin height-mob {
+  @media only screen and (max-height: #{$smallest-height}) and (max-width: #{$break-small}), (max-width: #{$break-medium}) {
+    @content;
+  }
+}
+
+@mixin portrait {
+ 	@media only screen and (max-width: #{$break-landscape}) and (orientation: landscape) {
+    @content;
+  }
+}
+//
+
+
+
+
+
+// GENERIC //
+.clear {clear: both;}
+
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+
+body {
+	font: 100% $font-stack;
+  	color: $text-color;
+  	-webkit-font-smoothing: antialiased;
+  	min-width: 320px;
+	font-size: 18px;
+}
+
+
+
+p::selection,h1::selection,em::selection,div::selection,h2::selection,h3::selection,h4::selection,strong::selection,ul::selection,ol::selection,li::selection {background: $the-color;}
+::selection, ::-moz-selection { background: $the-color; }
+a::selection {background: $white-color;}
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);	
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+
+
+// Main heading white
+h1{color: $white-color; font-weight: 300; font-size: 2vw; line-height: 1.5em; padding: 0 1em;
+	@include tablet {font-size: 4vw;}
+	@include mobile {font-size: 9vw;}
+} 
+
+
+h2{color: $white-color; font-weight: 300; font-size: 6em; line-height: 1.3em; background-color: rgba(0,0,0,0.6); padding: 0em 0.8em 0 0.2em;
+  @include tablet {font-size: 10vw;}
+  @include mobile {font-size: 15vw;}
+
+
+}
+
+h3{ color: $white-color; font-weight: 100; font-size: 2em; 
+  @include tablet {font-size: 1.5em; }
+  @include mobile {font-size: 1em; }
+} // section heading grey, italic, line-height 0 as one line.
+
+h4{text-align: center; color: $white-color; font-weight: 100;  font-family: $font-fourth;  line-height: normal; font-size: 2em; position:relative; z-index: 1; } // open sectiion heading, italic, line-height 0 as one line.
+
+h5{text-align: center; color: $white-color; font-weight: 100;  font-family: $font-stack;  line-height: normal; font-size: 1em; position:relative; z-index: 1; } // open sectiion heading, italic, line-height 0 as one line.
+
+alloydivider {color: $the-color; font-weight: bold; top: -3px; position: relative;}
+
+em {font-style: italic; }
+
+
+p { color: $text-color; text-align: center; line-height: 1.5; }
+p a  { text-decoration: underline!important; color: $the-color;  font-size: inherit;  font-family: inherit;  cursor: hand;  cursor: pointer; font-weight: 600; }
+p a:hover  { text-decoration: none!important; }
+
+
+
+
+
+#top {
+
+  width: 100%;
+  min-height: 540px;
+  position: relative;
+  background: linear-gradient(#202020, #000);
+
+
+  #top-bar {width: 100%; height: 50px; background: black; position: relative; opacity: 1;
+    
+    #menu { float: right; height: 100%;
+
+      #wrap {
+        display: table; height: 100%;
+        div {padding-right: 1.5em; color: $the-color; display: table-cell; vertical-align: middle; cursor: pointer; transition: all .3s;
+          &.ng-hover-add.ng-hover-add-active, &.ng-hover {
+            color: $white-color;
+          }
+        }
+      }
+      
+
+    }
+
+  }
+
+  #big-text {margin-left: 5vw; margin-top: 5em; position: relative;
+    &.not-top {margin-top: 0}
+
+  }
+
+  #small-text {
+     position: relative; margin-top: 10vh; text-align: right; margin-right: 5vw; margin-left: 40vw;
+     @include tablet {margin-left: 30vw; margin-top: 10vh;}
+     @include mobile {margin-left: 20vw; margin-top: 5vh;}
+     @include height {display: none;}
+     @include height-mob {display: block;}
+  }
+
+  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/london.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.3; z-index: 0; background-position: center; }
+  
+  #button-cont {
+    width: 100%; overflow: hidden;
+    #button { border-radius: 0px; margin-left: 5vw; background: $the-color; position: relative; float: left; text-align: center; margin-top: 2em; cursor: pointer; transition: all .3s;
+      &.ng-hover-add.ng-hover-add-active, &.ng-hover {
+  
+        background: rgba(0,0,0,0.5);
+        
+    
+
+      }
+
+
+    }
+  }
+}
+
+
+
+
+
+#middle {
+  overflow:hidden;
+
+  .seperate {width: 5%; height: 5px; float: left;}
+
+  .bit {
+
+    width: 46.1%; float: left; margin-left: 2.6%; margin-top: 2.6vw; overflow: hidden;
+    @include tablet {float: none; width: 94.8%; }
+    &.not-first-row {margin-top: 1vw;
+      @include mobile {margin-top: 2.6vw;}
+    }
+    &.last-row {margin-bottom: 1vw;
+      @include mobile {margin-bottom: 2.6vw;}
+    }
+    .b-cont {
+
+       position: relative; position: relative; width: 100%; 
+      img{ width: 100%;  position: relative; float: left; }
+
+      .b-text {width: 100%; margin-top: 1vw; margin-bottom: 1vw; float: left; 
+
+        h1{color: $black-color; padding: 0;}
+
+      }
+      
+    }
+
+  }
+
+
+
+}
+
+
+
+#skills {
+
+  background : #505050; 
+  color: $white-color; 
+  overflow: hidden;
+  position: relative;
+  background: $black-color;
+  display: table;
+  width: 100%;
+
+  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/IMG_3694.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.2; z-index: 0; background-position: center; }
+
+  .center {display: table-cell; vertical-align: middle; position: relative; z-index: 10;
+    .bit {
+      width: 94.8%; margin-left: 2.6%; margin-top: 12vw;  margin-bottom: 12vw; overflow: hidden; text-align: center; 
+
+      @include tablet { width: 80%; margin-left: 10%; }
+
+
+      h1{color: $white-color; padding: 0;}
+      ul {//list-style-type: disc; list-style-position: inside;
+        //padding-top: 2em;
+        li {padding-top: 2em;}
+      }
+
+    }
+  }
+
+
+
+}
+
+
+.divide {width: 100%; height: 0.15em; background: $the-color; position: absolute;}
+
+#contact {
+  background: $white-color;
+  overflow: hidden;
+  position: relative;
+  color: $text-color;
+
+  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/map.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.2; z-index: 0; background-position: center; }
+
+  .bit {
+        width: 94.8%; margin-left: 2.6%; margin-top: 3vw;  margin-bottom: 4vw; overflow: hidden; text-align: center; position: relative; z-index: 10;
+
+        @include tablet { width: 80%; margin-left: 10%;  margin-top: 10vw;  margin-bottom: 11vw; }
+        @include mobile { margin-top: 12vw;  margin-bottom: 13vw; }
+
+        h1 {padding: 0; color: $text-color;}
+        ul {//list-style-type: disc; list-style-position: inside;
+          padding-top: 2em;
+          li {padding-bottom: 2em;}
+        }
+        i.m {margin-left: 0.2em;}
+
+  }
+
+}
+
+
+#bottom {
+  width: 100%; height: 50px; background: $text-color; position: relative; opacity: 1;
+
+}
