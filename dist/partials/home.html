@@ -15,12 +15,12 @@
 
                             class="toucharea" ng-click="goNew('bit', $event, this); newLocation('{{m.go}}');"
 
-                            ng-mouseenter="this.over = true"
-                            ng-mouseleave="this.over = false"
+                            ng-mouseenter="go.over = true"
+                            ng-mouseleave="go.over = false"
 
-                            my-show="this.show"
+                            my-show="go.show"
                             after-show="afterShow()"
-                            ng-class="{'ng-hover' : (this.over && inputType == 'mouse')}"
+                            ng-class="{'ng-hover' : (go.over && inputType == 'mouse')}"
 
 
                     >{{m.item}}
@@ -61,54 +61,64 @@
 
     <section id="middle" class="middle">
         <div class="divide"></div>
-        <div class="bit">
-            <div class="b-cont">
-                <div class="center">
-                    <img src="img/dummy.jpg">
-                    <div class="b-text"><h1>Lorem 1</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
+        
+
+        <div class="bit-row">
+            
+                <div class="bit">
+                    <div class="b-cont">
+                        <div class="center">
+                            <img src="img/dummy.jpg">
+                            <div class="b-text"><h1>Lorem 1</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
 
 
+                        </div>
+                    </div>
+                  
                 </div>
-            </div>
-          
+
+
+
+                <div class="bit">
+                    <div class="b-cont">
+                        <div class="center">
+                            <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 2</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
+
+
+                        </div>
+                    </div>
+                  
+                </div>
+
         </div>
 
+        <div class="bit-row">
+
+                <div class="bit not-first-row">
+                    <div class="b-cont">
+                        <div class="center">
+                            <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 3</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
 
 
-        <div class="bit">
-            <div class="b-cont">
-                <div class="center">
-                    <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 2</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
-
-
+                        </div>
+                    </div>
+                  
                 </div>
-            </div>
-          
-        </div>
 
 
-        <div class="bit not-first-row">
-            <div class="b-cont">
-                <div class="center">
-                    <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 2</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
+                <div class="bit not-first-row last-row">
+                    <div class="b-cont">
+                        <div class="center">
+                            <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 4</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
 
 
-                </div>
-            </div>
-          
-        </div>
+                        </div>
+                    </div>
+                  
+                </div> 
 
+        </div>    
 
-        <div class="bit not-first-row last-row">
-            <div class="b-cont">
-                <div class="center">
-                    <img src="img/dummy.jpg"><div class="b-text"><h1>Lorem 2</h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie sollicitudin est facilisis eleifend. Phasellus malesuada, sapien in malesuada suscipit, justo sem volutpat lectus, quis vestibulum felis erat vitae ante.</div>
-
-
-                </div>
-            </div>
-          
-        </div>                
     </section>
 
 
@@ -126,7 +136,7 @@
                     <li>Developing pixel-perfect UIs across a variety of web platforms.
                     <li>Documenting and following wireframes and workflows.</li>
                     <li>Cross-browser compatibility.</li>
-                    <li><i class="fa fa-file-pdf-o fa-2x"></i>&nbsp;&nbsp;Download CV</li>
+                    <a href="img/CWCV.pdf" target="_blank"><li><i class="fa fa-file-pdf-o fa-2x"><div class="spacer"></div></i>Download CV</li></a>
                 </ul>
              
             </div> 
@@ -145,9 +155,10 @@
         <div class="bit">
 
             <h1>Contact</h1>
-            <i class="fa fa-instagram fa-2x"></i>
-            <i class="fa fa-linkedin-square fa-2x m"></i>
-            <i class="fa fa-envelope-square fa-2x m"></i>
+            <a href="https://uk.linkedin.com/in/chris-ward-bb809626" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+            <a href="https://github.com/chrissfa" target="_blank"><i class="fa fa-git-square fa-2x m"></i></a>
+            <a href="https://www.instagram.com/chrissfa" target="_blank"><i class="fa fa-instagram fa-2x m"></i></a>
+            <a href="mailto:cjwmail@gmail.com" ><i class="fa fa-envelope-square fa-2x m"></i></a>
              
         </div> 
 

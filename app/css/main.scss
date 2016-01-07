@@ -215,9 +215,9 @@ p a:hover  { text-decoration: none!important; }
 
       #wrap {
         display: table; height: 100%;
-        div {padding-right: 1.5em; color: $the-color; display: table-cell; vertical-align: middle; cursor: pointer; transition: all .3s;
+        div {padding-right: 1.5em; color: $white-color; display: table-cell; vertical-align: middle; cursor: pointer; transition: all .3s;
           &.ng-hover-add.ng-hover-add-active, &.ng-hover {
-            color: $white-color;
+            color: $the-color;
           }
         }
       }
@@ -233,9 +233,9 @@ p a:hover  { text-decoration: none!important; }
   }
 
   #small-text {
-     position: relative; margin-top: 10vh; text-align: right; margin-right: 5vw; margin-left: 40vw;
-     @include tablet {margin-left: 30vw; margin-top: 10vh;}
-     @include mobile {margin-left: 20vw; margin-top: 5vh;}
+     position: relative; margin-top: 10vh; text-align: left; margin-right: 40vw; margin-left: 5vw;
+     @include tablet {margin-left: 10vw; margin-top: 30vh;}
+     @include mobile {margin-left: 5vw; margin-top: 20vh;}
      @include height {display: none;}
      @include height-mob {display: block;}
   }
@@ -267,28 +267,34 @@ p a:hover  { text-decoration: none!important; }
 
   .seperate {width: 5%; height: 5px; float: left;}
 
-  .bit {
+  .bit-row {
+      
+      overflow: hidden;
 
-    width: 46.1%; float: left; margin-left: 2.6%; margin-top: 2.6vw; overflow: hidden;
-    @include tablet {float: none; width: 94.8%; }
-    &.not-first-row {margin-top: 1vw;
-      @include mobile {margin-top: 2.6vw;}
-    }
-    &.last-row {margin-bottom: 1vw;
-      @include mobile {margin-bottom: 2.6vw;}
-    }
-    .b-cont {
+      .bit {
 
-       position: relative; position: relative; width: 100%; 
-      img{ width: 100%;  position: relative; float: left; }
+        width: 46.1%; float: left; margin-left: 2.6%; margin-top: 2.6vw; overflow: hidden;
+        @include tablet {float: none; width: 94.8%; }
+        &.not-first-row {margin-top: 1vw;
+          @include mobile {margin-top: 2.6vw;}
+        }
+        &.last-row {margin-bottom: 1vw;
+          @include mobile {margin-bottom: 2.6vw;}
+        }
+        .b-cont {
 
-      .b-text {width: 100%; margin-top: 1vw; margin-bottom: 1vw; float: left; 
+           position: relative; position: relative; width: 100%; 
+          img{ width: 100%;  position: relative; float: left; }
 
-        h1{color: $black-color; padding: 0;}
+          .b-text {width: 100%; margin-top: 1vw; margin-bottom: 1vw; float: left; 
+
+            h1{color: $black-color; padding: 0;}
+
+          }
+          
+        }
 
       }
-      
-    }
 
   }
 
@@ -320,7 +326,15 @@ p a:hover  { text-decoration: none!important; }
       h1{color: $white-color; padding: 0;}
       ul {//list-style-type: disc; list-style-position: inside;
         //padding-top: 2em;
-        li {padding-top: 2em;}
+        li {padding-top: 2em;
+          &:last-child {    display: inline-block;}
+        }
+
+        a {color: $white-color; transition: all .3s; text-decoration: underline;
+          &:hover {color: $the-color; }
+          .spacer {width: 1.2em;}
+        }
+
       }
 
     }
@@ -334,25 +348,29 @@ p a:hover  { text-decoration: none!important; }
 .divide {width: 100%; height: 0.15em; background: $the-color; position: absolute;}
 
 #contact {
-  background: $white-color;
+  background: $black-color;
   overflow: hidden;
   position: relative;
   color: $text-color;
 
-  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/map.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.2; z-index: 0; background-position: center; }
+  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/map.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.3; z-index: 0; background-position: center; }
 
   .bit {
-        width: 94.8%; margin-left: 2.6%; margin-top: 3vw;  margin-bottom: 4vw; overflow: hidden; text-align: center; position: relative; z-index: 10;
+        width: 94.8%; margin-left: 2.6%; margin-top: 5vw;  margin-bottom: 6vw; overflow: hidden; text-align: center; position: relative; z-index: 10;
 
         @include tablet { width: 80%; margin-left: 10%;  margin-top: 10vw;  margin-bottom: 11vw; }
         @include mobile { margin-top: 12vw;  margin-bottom: 13vw; }
 
-        h1 {padding: 0; color: $text-color;}
+        h1 {padding: 0; color: $white-color; margin-bottom: 0.6em;}
         ul {//list-style-type: disc; list-style-position: inside;
           padding-top: 2em;
           li {padding-bottom: 2em;}
         }
         i.m {margin-left: 0.2em;}
+        a {
+          color: $white-color; transition: all .3s;
+          &:hover {color: lighten( $the-color, 0% );}
+        }
 
   }
 
