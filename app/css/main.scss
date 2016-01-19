@@ -179,7 +179,7 @@ h2{color: $white-color; font-weight: 300; font-size: 6em; line-height: 1.3em; ba
 
 }
 
-h3{ color: $white-color; font-weight: 100; font-size: 2em; 
+h3{ color: $white-color; font-weight: 100; font-size: 2em; letter-spacing: 1px; 
   @include tablet {font-size: 1.5em; }
   @include mobile {font-size: 1em; }
 } // section heading grey, italic, line-height 0 as one line.
