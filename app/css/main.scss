@@ -204,7 +204,7 @@ p a:hover  { text-decoration: none!important; }
 #top {
 
   width: 100%;
-  min-height: 540px;
+  min-height: 480px;
   position: relative;
   background: linear-gradient(#202020, #000);
 
@@ -240,7 +240,7 @@ p a:hover  { text-decoration: none!important; }
      @include height-mob {display: block;}
   }
 
-  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/london.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.3; z-index: 0; background-position: center; }
+  .image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/london.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.3; z-index: 0; background-position: center; }
   
   #button-cont {
     width: 100%; overflow: hidden;
@@ -314,7 +314,7 @@ p a:hover  { text-decoration: none!important; }
   display: table;
   width: 100%;
 
-  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/IMG_3694.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.2; z-index: 0; background-position: center; }
+  .image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/IMG_3694.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.2; z-index: 0; background-position: center; }
 
   .center {display: table-cell; vertical-align: middle; position: relative; z-index: 10;
     .bit {
@@ -353,7 +353,7 @@ p a:hover  { text-decoration: none!important; }
   position: relative;
   color: $text-color;
 
-  #image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/map.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.3; z-index: 0; background-position: center; }
+  .image-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: url("../img/map.jpg"); background-repeat: no-repeat; background-size: cover; opacity: 0.3; z-index: 0; background-position: center; }
 
   .bit {
         width: 94.8%; margin-left: 2.6%; margin-top: 5vw;  margin-bottom: 6vw; overflow: hidden; text-align: center; position: relative; z-index: 10;
@@ -362,15 +362,19 @@ p a:hover  { text-decoration: none!important; }
         @include mobile { margin-top: 12vw;  margin-bottom: 13vw; }
 
         h1 {padding: 0; color: $white-color; margin-bottom: 0.6em;}
+
         ul {//list-style-type: disc; list-style-position: inside;
           padding-top: 2em;
           li {padding-bottom: 2em;}
         }
-        i.m {margin-left: 0.2em;}
-        a {
-          color: $white-color; transition: all .3s;
-          &:hover {color: lighten( $the-color, 0% );}
+
+        i { color: $white-color; transition: all .3s; cursor: pointer; margin-left: 0.2em; transition: all .3s;
+          //&:hover {color: lighten( $the-color, 0% );}
+          &.ng-hover-add.ng-hover-add-active, &.ng-hover {color: lighten( $the-color, 0% );}
+          &:first-of-type {margin-left: 0;}
         }
+        
+
 
   }
 

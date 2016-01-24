@@ -115,7 +115,7 @@ gulp.task('browser-sync', function() {
  
 
         https: false,
-        port: 7654,
+        port: 444,
   
         server: {
             baseDir: "dist"

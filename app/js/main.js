@@ -56,6 +56,15 @@
     function ($scope, $location, getData, saveData, $sce, $timeout, $window, $rootScope, navigation) {
 
         console.log('in MAIN CTRL');
+        saveData.loadFonts();
+        $scope.$watch(function () { // watch for navigation type change and update scope
+
+            return saveData.fontsLoaded; 
+
+        }, function (newValue, oldValue) {
+            console.log('new font value = '+newValue);
+
+        });  
 
         // where are we
         
@@ -71,12 +80,14 @@
           
         };
 
-        $scope.newLocation = function(which) { // For top button to scroll down
-          console.log('new location = '+which);
-          $scope.currentLocation = saveData.newLocation(which);
-
+        $scope.theLinks = {
+          store: [
+            {'link' : 'https://uk.linkedin.com/in/chris-ward-bb809626', 'icon' : 'fa-linkedin-square'},
+            {'link' : 'https://uk.linkedin.com/in/chris-ward-bb809626', 'icon' : 'fa-git-square'},
+            {'link' : 'https://uk.linkedin.com/in/chris-ward-bb809626', 'icon' : 'fa-instagram'},
+            {'link' : 'https://uk.linkedin.com/in/chris-ward-bb809626', 'icon' : 'fa-envelope-square'}
+          ]
         };
-        
 
         // Touch functionality
 
@@ -108,8 +119,14 @@
 
 
 
-        $scope.goNew = function(path, event, element){
-            navigation.goNew(path, event, element);
+        $scope.goNew = function(path, event, element, typeOfNav){
+
+          if(typeOfNav === 'scroll'){
+            console.log('path = '+path[0]);
+            $scope.currentLocation = saveData.newLocation(path); // directive watching scope.currentLocation to scroll if typeOfNav == scroll
+          }
+          navigation.goNew(path, event, element, typeOfNav);
+          
  
         };
 
@@ -117,7 +134,9 @@
           navigation.afterShow();
         };
 
-
+        $scope.href = function(link, type){
+            navigation.href(link, type);
+        };
 
   }]);
 

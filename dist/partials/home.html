@@ -6,21 +6,21 @@
     <section id="top">
 
         
-        <div id="image-bg"></div>
+        <div class="image-bg"></div>
         <div id="top-bar">
             <div id="menu">
                 <div id="wrap">
 
                     <div ng-repeat="m in menu.store"
 
-                            class="toucharea" ng-click="goNew('bit', $event, this); newLocation('{{m.go}}');"
+                            class="toucharea" ng-click="goNew('{{m.go}}', $event, m, 'scroll');"
 
-                            ng-mouseenter="go.over = true"
-                            ng-mouseleave="go.over = false"
+                            ng-mouseenter="m.over = true"
+                            ng-mouseleave="m.over = false"
 
-                            my-show="go.show"
-                            after-show="afterShow()"
-                            ng-class="{'ng-hover' : (go.over && inputType == 'mouse')}"
+                            my-show="m.show"
+                            after-show="afterShow();"
+                            ng-class="{'ng-hover' : (m.over && inputType == 'mouse')}"
 
 
                     >{{m.item}}
@@ -37,7 +37,7 @@
         <div id="big-text" class="not-top"><h2>Front-end Developer</h2></div>
         <div id="button-cont">
             <div id="button"
-                            class="toucharea" ng-click="goNew('bit', $event, this); newLocation('middle');"
+                            class="toucharea" ng-click="goNew('middle', $event, this, 'scroll');"
 
                             ng-mouseenter="this.over = true"
                             ng-mouseleave="this.over = false"
@@ -68,7 +68,7 @@
                 <div class="bit">
                     <div class="b-cont">
                         <div class="center">
-                            <img src="img/alloy_macbook.png">
+                            <img src="img/alloy_site.jpg">
                             <div class="b-text"><h1>Websites</h1>Building responsive websites using AngularJS, HTML5, CSS/SASS, Wordpress API, Gulp, experience using MEAN stack, SEO optimisation and familiar with OO concepts.</div>
 
 
@@ -82,7 +82,7 @@
                 <div class="bit">
                     <div class="b-cont">
                         <div class="center">
-                            <img src="img/homepad_tablet.png"><div class="b-text"><h1>HomePad</h1>Creating a responsive front-end for a medical application for the elderly for various tablet devices. For this project I used AngularJS to create the front-end.</div>
+                            <img src="img/tablet_homepad.jpg"><div class="b-text"><h1>HomePad</h1>Creating a responsive front-end for a medical application for the elderly for various tablet devices. For this project I used AngularJS to create the front-end.</div>
 
 
                         </div>
@@ -97,7 +97,7 @@
                 <div class="bit not-first-row">
                     <div class="b-cont">
                         <div class="center">
-                            <img src="img/homepad_desktop.png"><div class="b-text"><h1>Friends and Family website</h1>Website for use in conjunction with the HomePad application, so that family members can keep in touch with their elderly relatives.</div>
+                            <img src="img/desktop_homepad.jpg"><div class="b-text"><h1>Friends and Family website</h1>Website for use in conjunction with the HomePad application, so that family members can keep in touch with their elderly relatives.</div>
 
 
                         </div>
@@ -124,7 +124,7 @@
 
     <section id="skills" class="skills">
         <div class="divide"></div>
-        <div id="image-bg"></div>
+        <div class="image-bg"></div>
         <div class="center">
             
             <div class="bit">
@@ -133,7 +133,7 @@
 
                 <ul>
                     <li>HTML5, CSS3, JavaScript, jQuery, AngularJS, Node.js, Express, MongoDB, Gulp, Sass, Ionic and Qt / QML.</li>
-                    <li>Developing pixel-perfect UIs across a variety of web platforms.
+                    <li>Developing pixel-perfect UIs across a variety of web platforms.</li>
                     <li>Documenting and following wireframes and workflows.</li>
                     <li>Cross-browser compatibility.</li>
                     <a href="img/CWCV.pdf" target="_blank"><li><i class="fa fa-file-pdf-o fa-2x"><div class="spacer"></div></i>Download CV</li></a>
@@ -150,15 +150,20 @@
 
 
     <section id="contact" class="contact">
-        <div id="image-bg"></div>
+        <div class="image-bg"></div>
         <div class="divide"></div>
         <div class="bit">
 
             <h1>Contact</h1>
-            <a href="https://uk.linkedin.com/in/chris-ward-bb809626" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
-            <a href="https://github.com/chrissfa" target="_blank"><i class="fa fa-git-square fa-2x m"></i></a>
-            <a href="https://www.instagram.com/chrissfa" target="_blank"><i class="fa fa-instagram fa-2x m"></i></a>
-            <a href="mailto:cjwmail@gmail.com" ><i class="fa fa-envelope-square fa-2x m"></i></a>
+
+            <i ng-repeat="l in theLinks.store" class="toucharea fa {{l.icon}} fa-2x"
+                ng-click="goNew(['{{l.link}}', '_blank'], $event, l, '');" 
+                ng-mouseenter="l.over = true"
+                ng-mouseleave="l.over = false"
+                my-show="l.show"
+                after-show="afterShow();"
+                ng-class="{'ng-hover' : (l.over && inputType == 'mouse')}"
+            ></i>
              
         </div> 
 
@@ -166,10 +171,3 @@
 
     </section>
 
-
-    <!--<section id="bottom" class="bottom">
-        
-        
-
-
-    </section>-->

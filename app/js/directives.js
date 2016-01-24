@@ -169,7 +169,12 @@
             // Moving away from home page, grab position.
             $animate.addClass(element, 'ng-hover').then(scope.afterShow);
           }
+          else {
+            $animate.removeClass(element, 'ng-hover');
+
+          }
         }, true);
+
 
       }
 

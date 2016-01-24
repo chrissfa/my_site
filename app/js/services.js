@@ -37,13 +37,33 @@
         var save = {};
         save.weDo = [];
         save.scrollHome = 0;
+        save.fontsLoaded = false;
+        
         save.newLocation = function(which) { // For top button to scroll down
           console.log('new location = '+which);
           this.currentLocation = which;
           //saveData.currentLocation = $scope.currentLocation;
           return this.currentLocation;
         };
+        save.loadFonts = function () {
+                var that = this;
+                function onActive() {
+                  console.log('font loaded');
+                  that.fontsLoaded = true;
+                }
 
+                function onInactive() {
+                  that.fontsLoaded = false;
+                }
+
+                $window.WebFont.load({
+                  custom: {
+                    families: ['open_sanslight open_sansitalic, open_sanslight_italic, open_sansregular, open_sanssemibold']
+                  },
+                  active: onActive,
+                  inactive: onInactive
+                });
+        };
         return save;
 
     }])
@@ -83,19 +103,20 @@
 
         save.navInfo = {'selectedNo': null, 'element': null };
 
-        save.goNew = function(path, event, element){
+        save.goNew = function(path, event, element, typeOfNav){
 
-            console.log('go new');
+            console.log('go new = '+path[1]);
 
             this.navInfo.selectedNo = path;
             this.navInfo.element = element;
 
             console.log('this.navInfo.element.length = '+this.navInfo.selectedNo.length);
 
-
             if(this.inputType == 'touch'){
               console.log('TOUCH');
-              this.navInfo.element.show = true;          
+              element.show = true;   
+
+               
             }
             else{
 
@@ -107,25 +128,25 @@
         save.afterShow = function(event){
           var i = this;
           this.navInfo.element.over = false;  
-          //if (this.navInfo.selectedNo instanceof Array) { // if value is array we would like to open as an href
-          //  this.href(this.navInfo.selectedNo[0], this.navInfo.selectedNo[1]);
-          //} else {
+          if (this.navInfo.selectedNo instanceof Array) { // if value is array we would like to open as an href
+            console.log('ARRAYED');
+            this.href(this.navInfo.selectedNo[0], this.navInfo.selectedNo[1]);
+          } //else {
           //$location.url(this.navInfo.selectedNo);
           //}          
 
           console.log('after show = '+i.navInfo.element.over);
-          $timeout(function(){ // slight delay so animation doesn't stop until page has loaded - ie no animation jump
-                i.navInfo.element.over = false;
-                i.navInfo.element.show = false;
+
+          i.navInfo.element.over = false;
+          i.navInfo.element.show = false;
 
 
-          },500);
         }; 
 
         save.href = function(link, type){
             console.log('HREF');
             $window.open(link, type);
-            this.leadForensics(link, link);
+
         };
 
         return save;
